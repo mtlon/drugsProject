@@ -27,7 +27,6 @@ public class DrugController {
         return new ResponseEntity<>("1", HttpStatus.OK);
     }
 
-
     @PostMapping("")
     public ResponseEntity<Drug> addDrug(@RequestBody Drug drug) {
         Drug newDrug = drugService.newDrag(drug);
