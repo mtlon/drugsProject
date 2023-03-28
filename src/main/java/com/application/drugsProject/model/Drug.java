@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Blob;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,4 +20,5 @@ public class Drug {
     private double price;
     private String form;
     private String producer;
+    private Byte[] image;
 }

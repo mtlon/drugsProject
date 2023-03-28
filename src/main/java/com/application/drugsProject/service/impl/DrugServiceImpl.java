@@ -5,6 +5,7 @@ import com.application.drugsProject.model.Drug;
 import com.application.drugsProject.repository.DrugRepository;
 import com.application.drugsProject.service.DrugService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class DrugServiceImpl implements DrugService {
     }
     @Override
     public List<Drug> getAllDrugs() {
-        List<Drug> drugs = drugRepository.findAll();
+        List<Drug> drugs = drugRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
         return drugs;
     }
     @Override
@@ -30,6 +31,7 @@ public class DrugServiceImpl implements DrugService {
         newDrug.setPrice(drug.getPrice());
         newDrug.setForm(drug.getForm());
         newDrug.setProducer(drug.getProducer());
+        newDrug.setImage(drug.getImage());
 
         drugRepository.save(newDrug);
         return newDrug;
@@ -42,6 +44,7 @@ public class DrugServiceImpl implements DrugService {
         updateDrug.setPrice(drug.getPrice());
         updateDrug.setForm(drug.getForm());
         updateDrug.setProducer(drug.getProducer());
+        updateDrug.setImage(drug.getImage());
 
         Drug updatedDrug = drugRepository.save(updateDrug);
         return updatedDrug;
