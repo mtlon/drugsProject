@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface DrugService {
     List<Drug> getAllDrugs();
-    Drug newDrag(Drug drug);
-    Drug updateDrug(Drug drug, int id);
-    void deleteDrug(int id);
+    Drug saveDrug(Drug drug);
+    Drug getDrugById(Long id);
+    Drug updateDrug(Drug drug);
+    void deleteDrugById(Long id);
 }

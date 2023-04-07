@@ -1,37 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:margin-left="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Drugs Management System</title>
+    <title>Drug's Management System</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
 </head>
 <body>
-    <div class="container">
-        <div class ="row">
-            <h1>List Drugs</h1>
-        </div>
-        <table class = "table table-striped table-bordered">
-            <thread>
-                <tr>
-                    <th> Drugs id </th>
-                    <th> Drugs name </th>
-                    <th> Drugs price </th>
-                    <th> Drugs form </th>
-                </tr>
-            </thread>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" th:href="@{/drugs} ">Drug's Management System</a>
 
-            <tbody>
-                <tr th:each = "drugs: ${drugs}">
-                    <td th:text = "${drugs.Id}"></td>
-                    <td th:text = "${drugs.name}"></td>
-                    <td th:text = "${drugs.price}"></td>
-                    <td th:text = "${drugs.form}"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+
+<div class ="container">
+    <table class="table table-striped table-bordered left-align">
+
+        <h1 style="margin-left: -250px;">Drug's list</h1>
+
+
+        <div class="row">
+            <div class="col-lg-4" style="margin-left: -250px;">
+                <a th:href="@{/drugs/new}" class="btn btn-primary btn-sm mb-3">Add drug</a>
+            </div>
+        </div>
+    <table class="table table-striped table-bordered" style="margin-left: -250px;">
+        <thead class = "table-dark">
+        <tr>
+            <th> Drug ID</th>
+            <th> Active substance</th>
+            <th> Drug's name</th>
+            <th> Dosage taking </th>
+            <th> Image </th>
+            <th> Special warnings </th>
+            <th> Contraindications </th>
+            <th> Additional info </th>
+            <th> Indications </th>
+            <th> Drug's form </th>
+            <th> Drug's price </th>
+            <th> Drug's producer </th>
+            <th> Actions </th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each = "drug: ${drugs}">
+            <td th:text = "${drug.id}"></td>
+            <td th:text = "${drug.activeSubstance}"></td>
+            <td th:text = "${drug.name}"></td>
+            <td th:text = "${drug.dosageTaking}"></td>
+            <td th:text = "${drug.image}"></td>
+            <td th:text = "${drug.specialWarnings}"></td>
+            <td th:text = "${drug.contraindications}"></td>
+            <td th:text = "${drug.additionalInfo}"></td>
+            <td th:text = "${drug.indications}"></td>
+            <td th:text = "${drug.form}"></td>
+            <td th:text = "${drug.price}"></td>
+            <td th:text = "${drug.producer}"></td>
+            <td style=" display: flex;">
+                <a th:href="@{/drugs/edit/{id}(id=${drug.id})}"
+                   class="btn btn-primary"
+                   style="margin-right: 20px;">Update</a>
+
+                <a th:href="@{/drugs/{id}(id=${drug.id})}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
 </body>
 </html>

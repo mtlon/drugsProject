@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Drug's Management System</title>
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" th:href="@{/drugs} ">Drug's Management System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+</nav>
+<br>
+<br>
+<div class = "container">
+  <div class = "row">
+    <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h1 class = "text-center"> Update Student </h1>
+      <div class = "card-body">
+        <form th:action="@{/drugs/{id} (id=${drug.id})}" th:object = "${drug}" method="POST">
+          <div class ="form-group">
+            <label> Active substance </label>
+            <input
+                    type = "text"
+                    name = "activeSubstance"
+                    th:field = "*{activeSubstance}"
+                    class = "form-control"
+                    placeholder="Enter active substance"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Drug's name </label>
+            <input
+                    type = "text"
+                    name = "name"
+                    th:field = "*{name}"
+                    class = "form-control"
+                    placeholder="Enter drug's name"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Image </label>
+            <input
+                    type = "text"
+                    name = "image"
+                    th:field = "*{image}"
+                    class = "form-control"
+                    placeholder="Enter image"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Special warnings </label>
+            <input
+                    type = "text"
+                    name = "specialWarnings"
+                    th:field = "*{specialWarnings}"
+                    class = "form-control"
+                    placeholder="Enter special warnings"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Contraindications </label>
+            <input
+                    type = "text"
+                    name = "contraindications"
+                    th:field = "*{contraindications}"
+                    class = "form-control"
+                    placeholder="Enter contraindications"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Additional info </label>
+            <input
+                    type = "text"
+                    name = "additionalInfo"
+                    th:field = "*{additionalInfo}"
+                    class = "form-control"
+                    placeholder="Enter additional info"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Indications </label>
+            <input
+                    type = "text"
+                    name = "indications"
+                    th:field = "*{indications}"
+                    class = "form-control"
+                    placeholder="Enter indications"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Drug's form </label>
+            <input
+                    type = "text"
+                    name = "form"
+                    th:field = "*{form}"
+                    class = "form-control"
+                    placeholder="Enter drug's form"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Price </label>
+            <input
+                    type = "text"
+                    name = "price"
+                    th:field = "*{price}"
+                    class = "form-control"
+                    placeholder="Enter price"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Producer </label>
+            <input
+                    type = "text"
+                    name = "producer"
+                    th:field = "*{producer}"
+                    class = "form-control"
+                    placeholder="Enter producer"
+            />
+          </div>
+
+          <div class = "box-footer">
+            <button type="submit" class = "btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
