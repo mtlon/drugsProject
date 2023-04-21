@@ -1,4 +1,4 @@
-package com.application.drugsProject.model;
+package com.application.drugsProject.cms.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 @Table(name = "drugs")
 @Getter
 @Setter
-public class Drug {
+public class DrugCms {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,9 +46,9 @@ public class Drug {
     @Column(name = "producer")
     private String producer;
 
-    public Drug() {
+    public DrugCms() {
     }
-    public Drug(Long id,
+    public DrugCms(Long id,
                 String activeSubstance,
                 String name,
                 String dosageTaking,

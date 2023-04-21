@@ -1,20 +1,17 @@
-package com.application.drugsProject.controller;
+package com.application.drugsProject.cms.controller;
 
-import com.application.drugsProject.model.Drug;
-import com.application.drugsProject.service.DrugService;
+import com.application.drugsProject.cms.model.DrugCms;
+import com.application.drugsProject.cms.service.DrugServiceCms;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class DrugController {
+@RequestMapping("/cms")
+public class DrugControllerCms {
+    private DrugServiceCms drugService;
 
-    private DrugService drugService;
-
-    public DrugController(DrugService drugService) {
+    public DrugControllerCms(DrugServiceCms drugService) {
         super();
         this.drugService = drugService;
     }
@@ -28,16 +25,16 @@ public class DrugController {
     @GetMapping("/drugs/new")
     public String createDrugForm(Model model) {
 
-        Drug drug = new Drug();
+        DrugCms drug = new DrugCms();
         model.addAttribute("drug", drug);
         return "create_drug";
 
     }
 
     @PostMapping("/drugs")
-    public String saveDrug(@ModelAttribute("drug") Drug drug) {
+    public String saveDrug(@ModelAttribute("drug") DrugCms drug) {
         drugService.saveDrug(drug);
-        return "redirect:/drugs";
+        return "redirect:/cms/drugs";
     }
 
     @GetMapping("/drugs/edit/{id}")
@@ -48,10 +45,10 @@ public class DrugController {
 
     @PostMapping("/drugs/{id}")
     public String updateDrug(@PathVariable Long id,
-                                @ModelAttribute("drug") Drug drug,
+                                @ModelAttribute("drug") DrugCms drug,
                                 Model model) {
 
-        Drug existingDrug = drugService.getDrugById(id);
+        DrugCms existingDrug = drugService.getDrugById(id);
         existingDrug.setId(id);
         existingDrug.setId(drug.getId());
         existingDrug.setActiveSubstance(drug.getActiveSubstance());
@@ -67,12 +64,12 @@ public class DrugController {
         existingDrug.setProducer(drug.getProducer());
 
         drugService.updateDrug(existingDrug);
-        return "redirect:/drugs";
+        return "redirect:/cms/drugs";
     }
 
     @GetMapping("/drugs/{id}")
     public String deleteDrug(@PathVariable Long id) {
         drugService.deleteDrugById(id);
-        return "redirect:/drugs";
+        return "redirect:/cms/drugs";
     }
 }

@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" th:href="@{/drugs} ">Drug's Management System</a>
+  <a class="navbar-brand" th:href="@{/cms/drugs} ">Drug's Management System</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -26,7 +26,7 @@
     <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
       <h1 class = "text-center"> Update Student </h1>
       <div class = "card-body">
-        <form th:action="@{/drugs/{id} (id=${drug.id})}" th:object = "${drug}" method="POST">
+        <form th:action="@{/cms/drugs/{id} (id=${drug.id})}" th:object = "${drug}" method="POST">
           <div class ="form-group">
             <label> Active substance </label>
             <input

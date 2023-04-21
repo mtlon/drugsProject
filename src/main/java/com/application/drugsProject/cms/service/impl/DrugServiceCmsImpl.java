@@ -1,40 +1,40 @@
-package com.application.drugsProject.service.impl;
+package com.application.drugsProject.cms.service.impl;
 
-import com.application.drugsProject.model.Drug;
-import com.application.drugsProject.repository.DrugRepository;
-import com.application.drugsProject.service.DrugService;
+import com.application.drugsProject.cms.model.DrugCms;
+import com.application.drugsProject.cms.repository.DrugRepositoryCms;
+import com.application.drugsProject.cms.service.DrugServiceCms;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class DrugServiceImpl implements DrugService {
+public class DrugServiceCmsImpl implements DrugServiceCms {
 
-    private DrugRepository drugRepository;
+    private DrugRepositoryCms drugRepository;
 
-    public DrugServiceImpl(DrugRepository drugRepository) {
+    public DrugServiceCmsImpl(DrugRepositoryCms drugRepository) {
         super();
         this.drugRepository = drugRepository;
     }
 
     @Override
-    public List<Drug> getAllDrugs() {
+    public List<DrugCms> getAllDrugs() {
         return drugRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override
-    public Drug saveDrug(Drug drug) {
+    public DrugCms saveDrug(DrugCms drug) {
         return drugRepository.save(drug);
     }
 
     @Override
-    public Drug getDrugById(Long id) {
+    public DrugCms getDrugById(Long id) {
         return drugRepository.findById(id).get();
     }
 
     @Override
-    public Drug updateDrug(Drug drug) {
+    public DrugCms updateDrug(DrugCms drug) {
         return drugRepository.save(drug);
     }
 
