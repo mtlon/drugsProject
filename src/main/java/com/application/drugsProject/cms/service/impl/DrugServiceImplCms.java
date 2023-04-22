@@ -1,10 +1,8 @@
 package com.application.drugsProject.cms.service.impl;
 
-import com.application.drugsProject.cms.model.BlogModelCms;
 import com.application.drugsProject.cms.model.DrugModelCms;
 import com.application.drugsProject.cms.repository.DrugRepositoryCms;
 import com.application.drugsProject.cms.service.DrugServiceCms;
-import com.application.drugsProject.exception.BlogModelNotFoundException;
 import com.application.drugsProject.exception.DrugNotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -66,6 +64,7 @@ public class DrugServiceImplCms implements DrugServiceCms {
 
     @Override
     public void deleteDrugById(int id) {
+        getDrugById(id);
         drugRepository.deleteById(id);
     }
 
