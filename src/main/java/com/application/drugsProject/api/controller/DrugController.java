@@ -13,7 +13,6 @@ import java.util.List;
 @RequestMapping("")
 public class DrugController {
     private DrugService drugService;
-
     @Autowired
     public DrugController(DrugService drugService) {
         this.drugService = drugService;

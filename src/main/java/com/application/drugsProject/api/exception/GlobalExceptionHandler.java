@@ -18,4 +18,13 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorObject, HttpStatus.NOT_FOUND);
     }
+    @ExceptionHandler(BlogModelNotFoundException.class)
+    public ResponseEntity<ErrorObject> handleBlogModelNotFoundException(BlogModelNotFoundException exception) {
+        ErrorObject errorObject = new ErrorObject();
+        errorObject.setStatusCode(HttpStatus.NOT_FOUND.value());
+        errorObject.setMessage(exception.getMessage());
+        errorObject.setTimestamp(new Date());
+
+        return new ResponseEntity<>(errorObject, HttpStatus.NOT_FOUND);
+    }
 }
