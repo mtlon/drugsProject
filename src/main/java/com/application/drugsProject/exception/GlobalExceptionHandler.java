@@ -1,4 +1,4 @@
-package com.application.drugsProject.api.exception;
+package com.application.drugsProject.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

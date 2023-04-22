@@ -1,4 +1,4 @@
-package com.application.drugsProject.api.exception;
+package com.application.drugsProject.exception;
 
 import lombok.Data;
 

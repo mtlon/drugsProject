@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" th:href="@{/drugs} ">Drug's Management System</a>
+  <a class="navbar-brand" th:href="@{/cms/drugs} ">Drug's Management System</a>
 
   <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -28,13 +28,13 @@
       <div class = "card-body">
         <form th:action="@{/cms/drugs}" th:object = "${drug}" method="POST">
           <div class ="form-group">
-            <label> Active substance </label>
+            <label> Image </label>
             <input
                     type = "text"
-                    name = "activeSubstance"
-                    th:field = "*{activeSubstance}"
+                    name = "image"
+                    th:field = "*{image}"
                     class = "form-control"
-                    placeholder="Enter activeSubstance"
+                    placeholder="Enter image"
             />
           </div>
 
@@ -50,13 +50,35 @@
           </div>
 
           <div class ="form-group">
-            <label> Image </label>
+            <label> Active substance </label>
             <input
                     type = "text"
-                    name = "image"
-                    th:field = "*{image}"
+                    name = "activeSubstance"
+                    th:field = "*{activeSubstance}"
                     class = "form-control"
-                    placeholder="Enter image"
+                    placeholder="Enter active substance"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Indications </label>
+            <input
+                    type = "text"
+                    name = "indications"
+                    th:field = "*{indications}"
+                    class = "form-control"
+                    placeholder="Enter indications"
+            />
+          </div>
+
+          <div class ="form-group">
+            <label> Dosage taking </label>
+            <input
+                    type = "text"
+                    name = "dosageTaking"
+                    th:field = "*{dosageTaking}"
+                    class = "form-control"
+                    placeholder="Dosage taking"
             />
           </div>
 
@@ -90,50 +112,6 @@
                     th:field = "*{additionalInfo}"
                     class = "form-control"
                     placeholder="Enter additional info"
-            />
-          </div>
-
-          <div class ="form-group">
-            <label> Indications </label>
-            <input
-                    type = "text"
-                    name = "indications"
-                    th:field = "*{indications}"
-                    class = "form-control"
-                    placeholder="Enter indications"
-            />
-          </div>
-
-          <div class ="form-group">
-            <label> Drug's form </label>
-            <input
-                    type = "text"
-                    name = "form"
-                    th:field = "*{form}"
-                    class = "form-control"
-                    placeholder="Enter drug's form"
-            />
-          </div>
-
-          <div class ="form-group">
-            <label> Price </label>
-            <input
-                    type = "text"
-                    name = "price"
-                    th:field = "*{price}"
-                    class = "form-control"
-                    placeholder="Enter price"
-            />
-          </div>
-
-          <div class ="form-group">
-            <label> Producer </label>
-            <input
-                    type = "text"
-                    name = "producer"
-                    th:field = "*{producer}"
-                    class = "form-control"
-                    placeholder="Enter producer"
             />
           </div>
 

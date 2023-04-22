@@ -1,6 +1,6 @@
 package com.application.drugsProject.api.service.impl;
 
-import com.application.drugsProject.api.exception.BlogModelNotFoundException;
+import com.application.drugsProject.exception.BlogModelNotFoundException;
 import com.application.drugsProject.api.model.BlogModel;
 import com.application.drugsProject.api.repository.BlogRepository;
 import com.application.drugsProject.api.service.BlogService;

@@ -1,6 +1,6 @@
 package com.application.drugsProject.api.service.impl;
 
-import com.application.drugsProject.api.exception.DrugNotFoundException;
+import com.application.drugsProject.exception.DrugNotFoundException;
 import com.application.drugsProject.api.model.DrugModel;
 import com.application.drugsProject.api.repository.DrugRepository;
 import com.application.drugsProject.api.service.DrugService;

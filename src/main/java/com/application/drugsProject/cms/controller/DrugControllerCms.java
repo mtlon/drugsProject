@@ -1,6 +1,6 @@
 package com.application.drugsProject.cms.controller;
 
-import com.application.drugsProject.cms.model.DrugCms;
+import com.application.drugsProject.cms.model.DrugModelCms;
 import com.application.drugsProject.cms.service.DrugServiceCms;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,51 +24,33 @@ public class DrugControllerCms {
 
     @GetMapping("/drugs/new")
     public String createDrugForm(Model model) {
-
-        DrugCms drug = new DrugCms();
+        DrugModelCms drug = new DrugModelCms();
         model.addAttribute("drug", drug);
         return "create_drug";
 
     }
-
     @PostMapping("/drugs")
-    public String saveDrug(@ModelAttribute("drug") DrugCms drug) {
+    public String saveDrug(@ModelAttribute("drug") DrugModelCms drug) {
         drugService.saveDrug(drug);
         return "redirect:/cms/drugs";
     }
 
     @GetMapping("/drugs/edit/{id}")
-    public String editDrugForm(@PathVariable Long id, Model model) {
+    public String editDrugForm(@PathVariable int id, Model model) {
         model.addAttribute("drug", drugService.getDrugById(id));
         return "edit_drugs";
     }
 
     @PostMapping("/drugs/{id}")
-    public String updateDrug(@PathVariable Long id,
-                                @ModelAttribute("drug") DrugCms drug,
+    public String updateDrug(@PathVariable int id,
+                                @ModelAttribute("drug") DrugModelCms drug,
                                 Model model) {
-
-        DrugCms existingDrug = drugService.getDrugById(id);
-        existingDrug.setId(id);
-        existingDrug.setId(drug.getId());
-        existingDrug.setActiveSubstance(drug.getActiveSubstance());
-        existingDrug.setName(drug.getName());
-        existingDrug.setDosageTaking(drug.getDosageTaking());
-        existingDrug.setImage(drug.getImage());
-        existingDrug.setSpecialWarnings(drug.getSpecialWarnings());
-        existingDrug.setContraindications(drug.getContraindications());
-        existingDrug.setAdditionalInfo(drug.getAdditionalInfo());
-        existingDrug.setIndications(drug.getIndications());
-        existingDrug.setForm(drug.getForm());
-        existingDrug.setPrice(drug.getPrice());
-        existingDrug.setProducer(drug.getProducer());
-
-        drugService.updateDrug(existingDrug);
+        drugService.updateDrug(drug, id);
         return "redirect:/cms/drugs";
     }
 
     @GetMapping("/drugs/{id}")
-    public String deleteDrug(@PathVariable Long id) {
+    public String deleteDrug(@PathVariable int id) {
         drugService.deleteDrugById(id);
         return "redirect:/cms/drugs";
     }

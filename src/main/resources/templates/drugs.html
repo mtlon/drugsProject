@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
-    <a class="navbar-brand" th:href="@{/drugs} ">Drug's Management System</a>
+    <a class="navbar-brand" th:href="@{/cms/drugs} ">Drug's Management System</a>
 
     <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -35,17 +35,14 @@
         <thead class = "table-dark">
         <tr>
             <th> Drug ID</th>
-            <th> Active substance</th>
-            <th> Drug's name</th>
-            <th> Dosage taking </th>
             <th> Image </th>
+            <th> Drug's name</th>
+            <th> Active substance</th>
+            <th> Indications </th>
+            <th> Dosage taking </th>
             <th> Special warnings </th>
             <th> Contraindications </th>
             <th> Additional info </th>
-            <th> Indications </th>
-            <th> Drug's form </th>
-            <th> Drug's price </th>
-            <th> Drug's producer </th>
             <th> Actions </th>
 
         </tr>
@@ -54,17 +51,14 @@
         <tbody>
         <tr th:each = "drug: ${drugs}">
             <td th:text = "${drug.id}"></td>
-            <td th:text = "${drug.activeSubstance}"></td>
-            <td th:text = "${drug.name}"></td>
-            <td th:text = "${drug.dosageTaking}"></td>
             <td th:text = "${drug.image}"></td>
+            <td th:text = "${drug.name}"></td>
+            <td th:text = "${drug.activeSubstance}"></td>
+            <td th:text = "${drug.indications}"></td>
+            <td th:text = "${drug.dosageTaking}"></td>
             <td th:text = "${drug.specialWarnings}"></td>
             <td th:text = "${drug.contraindications}"></td>
             <td th:text = "${drug.additionalInfo}"></td>
-            <td th:text = "${drug.indications}"></td>
-            <td th:text = "${drug.form}"></td>
-            <td th:text = "${drug.price}"></td>
-            <td th:text = "${drug.producer}"></td>
             <td style=" display: flex;">
                 <a th:href="@{/cms/drugs/edit/{id}(id=${drug.id})}"
                    class="btn btn-primary"

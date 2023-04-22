@@ -1,13 +1,13 @@
 package com.application.drugsProject.cms.service;
 
-import com.application.drugsProject.cms.model.DrugCms;
+import com.application.drugsProject.cms.model.DrugModelCms;
 
 import java.util.List;
 
 public interface DrugServiceCms {
-    List<DrugCms> getAllDrugs();
-    DrugCms saveDrug(DrugCms drug);
-    DrugCms getDrugById(Long id);
-    DrugCms updateDrug(DrugCms drug);
-    void deleteDrugById(Long id);
+    List<DrugModelCms> getAllDrugs();
+    DrugModelCms saveDrug(DrugModelCms drug);
+    DrugModelCms getDrugById(int id);
+    DrugModelCms updateDrug(DrugModelCms drug, int id);
+    void deleteDrugById(int id);
 }

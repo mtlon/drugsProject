@@ -1,4 +1,4 @@
-package com.application.drugsProject.api.exception;
+package com.application.drugsProject.exception;
 
 public class BlogModelNotFoundException extends RuntimeException {
     private static final long serialVersionUID = 1;
