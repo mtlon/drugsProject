@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Drug's Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" th:href="@{/cms/user} ">Drug's Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class = "text-center"> Create New User </h1>
+            <div class = "card-body">
+                <form th:action="@{/cms/user}" th:object = "${user}" method="POST">
+                    <div class ="form-group">
+                        <label> Username </label>
+                        <input
+                                type = "text"
+                                name = "username"
+                                th:field = "*{username}"
+                                class = "form-control"
+                                placeholder="Input username"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Password </label>
+                        <input
+                                type = "text"
+                                name = "password"
+                                th:field = "*{password}"
+                                class = "form-control"
+                                placeholder="Enter password"
+                        />
+                    </div>
+
+                        <div class = "box-footer">
+                            <button type="submit" class = "btn btn-primary">
+                                Submit
+                            </button>
+                        </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

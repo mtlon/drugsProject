@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:margin-left="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Drug's Management System</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" th:href="@{/cms/user} ">Drug's Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+</nav>
+
+<div class ="container">
+    <table class="table table-striped table-bordered left-align">
+
+        <h1 style="margin-left: -250px;">User list</h1>
+
+
+        <div class="row">
+            <div class="col-lg-4" style="margin-left: -250px;">
+                <a th:href="@{/cms/user/new}" class="btn btn-primary btn-sm mb-3">Add user</a>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered" style="margin-left: -250px;">
+            <thead class = "table-dark">
+            <tr>
+                <th> ID </th>
+                <th> Username </th>
+                <th> Password </th>
+                <th> Actions </th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each = "users: ${user}">
+                <td th:text = "${users.id}"></td>
+                <td th:text = "${users.username}"></td>
+                <td th:text = "${users.password}"></td>
+
+                <td style=" display: flex;">
+                    <a th:href="@{/cms/user/edit/{id}(id=${users.id})}"
+                       class="btn btn-primary"
+                       style="margin-right: 20px;">Update</a>
+
+                    <a th:href="@{/cms/user/{id}(id=${users.id})}"
+                       class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+
+</div>
+</body>
+</html>
