@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController()
@@ -30,12 +31,12 @@ public class DrugControllerAPI {
     }
 
     @PostMapping("/drug")
-    public ResponseEntity<DrugModel> createDrug(@RequestBody DrugModel drugModel) {
+    public ResponseEntity<DrugModel> createDrug(@RequestBody DrugModel drugModel) throws IOException {
         DrugModel drug = drugService.createDrug(drugModel);
         return new ResponseEntity<>(drug, HttpStatus.CREATED);
     }
     @PutMapping("/drug/{id}")
-    public ResponseEntity<DrugModel> updateDrug(@RequestBody DrugModel drugModel, @PathVariable("id") int drugID) {
+    public ResponseEntity<DrugModel> updateDrug(@RequestBody DrugModel drugModel, @PathVariable("id") int drugID) throws IOException {
         DrugModel drug = drugService.updateDrug(drugModel, drugID);
         return new ResponseEntity<>(drug, HttpStatus.OK);
     }

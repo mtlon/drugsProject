@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/cms")
 public class DrugControllerCMS {
@@ -30,7 +32,7 @@ public class DrugControllerCMS {
 
     }
     @PostMapping("/drugs")
-    public String saveDrug(@ModelAttribute("drug") DrugModel drug) {
+    public String saveDrug(@ModelAttribute("drug") DrugModel drug) throws IOException {
         drugService.createDrug(drug);
         return "redirect:/cms/drugs";
     }
@@ -44,7 +46,7 @@ public class DrugControllerCMS {
     @PostMapping("/drugs/{id}")
     public String updateDrug(@PathVariable int id,
                              @ModelAttribute("drug") DrugModel drug,
-                             Model model) {
+                             Model model) throws IOException {
         drugService.updateDrug(drug, id);
         return "redirect:/cms/drugs";
     }

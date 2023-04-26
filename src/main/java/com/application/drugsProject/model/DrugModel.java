@@ -15,20 +15,23 @@ public class DrugModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "active_substance")
-    private String activeSubstance;
+    @Column(name = "image")
+    private byte[] image;
 
     @Column(name = "name")
     private String name;
 
+    @Column(name = "active_substance")
+    private String activeSubstance;
+
+    @Column(name = "indications")
+    private String indications;
+
     @Column(name = "dosage_taking")
     private String dosageTaking;
 
-    @Column(name = "image")
-    private Byte[] image;
-
-    @Column(name = "special_warnings")
-    private String specialWarnings;
+    @Column(name = "warnings")
+    private String warnings;
 
     @Column(name = "contraindications")
     private String contraindications;
@@ -36,17 +39,6 @@ public class DrugModel {
     @Column(name = "additional_info")
     private String additionalInfo;
 
-    @Column(name = "indications")
-    private String indications;
-
-    @Column(name = "form")
-    private String form;
-
-    @Column(name = "price")
-    private double price;
-
-    @Column(name = "producer")
-    private String producer;
 }
 
 

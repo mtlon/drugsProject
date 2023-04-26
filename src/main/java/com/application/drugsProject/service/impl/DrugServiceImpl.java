@@ -50,13 +50,10 @@ public class DrugServiceImpl implements DrugService {
         drug.setName(drugModel.getName());
         drug.setDosageTaking(drugModel.getDosageTaking());
         drug.setImage(drugModel.getImage());
-        drug.setSpecialWarnings(drugModel.getSpecialWarnings());
+        drug.setWarnings(drugModel.getWarnings());
         drug.setContraindications(drugModel.getContraindications());
         drug.setAdditionalInfo(drugModel.getAdditionalInfo());
         drug.setIndications(drugModel.getIndications());
-        drug.setForm(drugModel.getForm());
-        drug.setPrice(drugModel.getPrice());
-        drug.setProducer(drugModel.getProducer());
 
         drugRepository.save(drug);
         return drug;
