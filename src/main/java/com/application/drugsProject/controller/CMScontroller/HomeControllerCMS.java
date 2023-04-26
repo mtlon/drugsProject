@@ -19,13 +19,13 @@ public class HomeControllerCMS {
     @GetMapping("")
     public String listHomeModels(Model model) {
         model.addAttribute("home", homeService.getAllHomeModels());
-        return "home";
+        return "home/home";
     }
     @GetMapping("/new")
     public String createHomeModel(Model model) {
         HomeModel home = new HomeModel();
         model.addAttribute("home", home);
-        return "create_home";
+        return "home/create_home";
 
     }
     @PostMapping("")
@@ -37,7 +37,7 @@ public class HomeControllerCMS {
     @GetMapping("/edit/{id}")
     public String editHomeModel(@PathVariable int id, Model model) {
         model.addAttribute("home", homeService.getHomeModelById(id));
-        return "edit_home";
+        return "home/edit_home";
     }
 
     @PostMapping("/{id}")

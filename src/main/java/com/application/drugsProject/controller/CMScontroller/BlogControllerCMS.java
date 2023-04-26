@@ -3,10 +3,11 @@ package com.application.drugsProject.controller.CMScontroller;
 import com.application.drugsProject.model.BlogModel;
 import com.application.drugsProject.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 @RequestMapping("/cms")
 public class BlogControllerCMS {
     private BlogService blogService;
@@ -19,13 +20,13 @@ public class BlogControllerCMS {
     @GetMapping("/blog")
     public String listDrugs(Model model) {
         model.addAttribute("blog", blogService.getBlogModelList());
-        return "blog";
+        return "blog/blog";
     }
     @GetMapping("/blog/new")
     public String createBlogModel(Model model) {
         BlogModel blog = new BlogModel();
         model.addAttribute("blog", blog);
-        return "create_blog";
+        return "blog/create_blog";
     }
     @PostMapping("/blog")
     public String saveBlogModel(@ModelAttribute("blog") BlogModel blog) {
@@ -35,7 +36,7 @@ public class BlogControllerCMS {
     @GetMapping("/blog/edit/{id}")
     public String editBlogModel(@PathVariable int id, Model model) {
         model.addAttribute("blog", blogService.getBlogModelById(id));
-        return "edit_blog";
+        return "blog/edit_blog";
     }
 
     @PostMapping("/blog/{id}")

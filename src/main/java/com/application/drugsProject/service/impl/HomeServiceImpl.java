@@ -2,6 +2,7 @@ package com.application.drugsProject.service.impl;
 
 import com.application.drugsProject.exception.HomeModelNotFoundException;
 import com.application.drugsProject.model.HomeModel;
+import com.application.drugsProject.model.UserModel;
 import com.application.drugsProject.repository.HomeRepository;
 import com.application.drugsProject.service.HomeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,8 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public List<HomeModel> getAllHomeModels() {
-        return homeRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        List<HomeModel> homeModelList = homeRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        return homeModelList.stream().toList();
     }
     @Override
     public HomeModel getHomeModelById(int homeModelID) {

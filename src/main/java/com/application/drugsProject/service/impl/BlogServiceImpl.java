@@ -5,6 +5,7 @@ import com.application.drugsProject.model.BlogModel;
 import com.application.drugsProject.repository.BlogRepository;
 import com.application.drugsProject.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public List<BlogModel> getBlogModelList() {
-        List<BlogModel> blogModels = blogRepository.findAll();
+        List<BlogModel> blogModels = blogRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
         return blogModels.stream().toList();
     }
 
@@ -60,8 +61,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public void deleteBlogModel(int blogModelID) {
-        BlogModel blogModelToDelete = blogRepository.findById(blogModelID)
-                .orElseThrow(() -> new BlogModelNotFoundException("Blog model was not found in database"));
+        getBlogModelById(blogModelID);
         blogRepository.deleteById(blogModelID);
     }
 }

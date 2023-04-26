@@ -5,6 +5,7 @@ import com.application.drugsProject.model.UserModel;
 import com.application.drugsProject.repository.UserRepository;
 import com.application.drugsProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserModel> getAllUserModels() {
-        List<UserModel> drugs = userRepository.findAll();
+        List<UserModel> drugs = userRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
         return drugs.stream().toList();
     }
 
@@ -32,13 +33,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserModel saveUserModel(UserModel userModel) {
-        UserModel user = userRepository.findByUsername(userModel.getUsername())
-                .orElse(new UserModel());
+        UserModel user = new UserModel();
+        user.setUsername(userModel.getUsername());
+        user.setPassword(userModel.getPassword());
 
-            user.setUsername(userModel.getUsername());
-            user.setPassword(userModel.getPassword());
-            userRepository.save(user);
-            return user;
+        return userRepository.save(user);
     }
 
     @Override

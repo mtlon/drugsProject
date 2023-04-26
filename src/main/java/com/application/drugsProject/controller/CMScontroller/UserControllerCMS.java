@@ -1,6 +1,5 @@
 package com.application.drugsProject.controller.CMScontroller;
 
-import com.application.drugsProject.model.HomeModel;
 import com.application.drugsProject.model.UserModel;
 import com.application.drugsProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +20,13 @@ public class UserControllerCMS {
     @GetMapping("")
     public String listUserModels(Model model) {
         model.addAttribute("user", userService.getAllUserModels());
-        return "user";
+        return "user/user";
     }
     @GetMapping("/new")
     public String createUserModel(Model model) {
         UserModel user = new UserModel();
         model.addAttribute("user", user);
-        return "create_user";
+        return "user/create_user";
     }
     @PostMapping("")
     public String saveUserModel(@ModelAttribute("user") UserModel userModel) {
@@ -37,7 +36,7 @@ public class UserControllerCMS {
     @GetMapping("/edit/{id}")
     public String editUserModel(@PathVariable int id, Model model) {
         model.addAttribute("user", userService.getUserModelById(id));
-        return "edit_user";
+        return "user/edit_user";
     }
     @PostMapping("/{id}")
     public String updateUserModel(@PathVariable int id,

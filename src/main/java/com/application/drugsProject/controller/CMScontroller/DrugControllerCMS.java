@@ -19,14 +19,14 @@ public class DrugControllerCMS {
     @GetMapping("/drugs")
     public String listDrugs(Model model) {
         model.addAttribute("drugs", drugService.getDrugsList());
-        return "drugs";
+        return "drug/drugs";
     }
 
     @GetMapping("/drugs/new")
     public String createDrugForm(Model model) {
         DrugModel drug = new DrugModel();
         model.addAttribute("drug", drug);
-        return "create_drug";
+        return "drug/create_drug";
 
     }
     @PostMapping("/drugs")
@@ -38,7 +38,7 @@ public class DrugControllerCMS {
     @GetMapping("/drugs/edit/{id}")
     public String editDrugForm(@PathVariable int id, Model model) {
         model.addAttribute("drug", drugService.getDrugById(id));
-        return "edit_drugs";
+        return "drug/edit_drugs";
     }
 
     @PostMapping("/drugs/{id}")

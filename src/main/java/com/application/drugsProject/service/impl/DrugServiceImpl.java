@@ -5,6 +5,7 @@ import com.application.drugsProject.model.DrugModel;
 import com.application.drugsProject.repository.DrugRepository;
 import com.application.drugsProject.service.DrugService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class DrugServiceImpl implements DrugService {
     }
     @Override
     public List<DrugModel> getDrugsList() {
-        List<DrugModel> drugs = drugRepository.findAll();
+        List<DrugModel> drugs = drugRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
         return drugs.stream().toList();
     }
 
@@ -32,52 +33,39 @@ public class DrugServiceImpl implements DrugService {
 
     @Override
     public DrugModel createDrug(DrugModel drugModel) {
-        DrugModel drug = drugRepository.findById(drugModel.getId())
-                .orElseThrow(()-> new RuntimeException("Drug exist in database"));
-
-        drug.setActiveSubstance(drug.getActiveSubstance());
-        drug.setName(drug.getName());
-        drug.setDosageTaking(drug.getDosageTaking());
-        drug.setImage(drug.getImage());
-        drug.setSpecialWarnings(drug.getSpecialWarnings());
-        drug.setContraindications(drug.getContraindications());
-        drug.setAdditionalInfo(drug.getAdditionalInfo());
-        drug.setIndications(drug.getIndications());
-        drug.setForm(drug.getForm());
-        drug.setPrice(drug.getPrice());
-        drug.setProducer(drug.getProducer());
-
-        drugRepository.save(drug);
-        return drug;
-        }
+        DrugModel drug = new DrugModel();
+        return getDrugModel(drugModel, drug);
+    }
 
     @Override
     public DrugModel updateDrug(DrugModel drugModel, int drugID) {
-        DrugModel existingDrug = drugRepository.findById(drugID)
+        DrugModel drug = drugRepository.findById(drugID)
                 .orElseThrow(()-> new DrugNotFoundException("Drug not found"));
 
-        existingDrug.setActiveSubstance(drugModel.getActiveSubstance());
-        existingDrug.setName(drugModel.getName());
-        existingDrug.setDosageTaking(drugModel.getDosageTaking());
-        existingDrug.setImage(drugModel.getImage());
-        existingDrug.setSpecialWarnings(drugModel.getSpecialWarnings());
-        existingDrug.setContraindications(drugModel.getContraindications());
-        existingDrug.setAdditionalInfo(drugModel.getAdditionalInfo());
-        existingDrug.setIndications(drugModel.getIndications());
-        existingDrug.setForm(drugModel.getForm());
-        existingDrug.setPrice(drugModel.getPrice());
-        existingDrug.setProducer(drugModel.getProducer());
+        return getDrugModel(drugModel, drug);
+    }
 
-        drugRepository.save(existingDrug);
-        return existingDrug;
+    private DrugModel getDrugModel(DrugModel drugModel, DrugModel drug) {
+        drug.setActiveSubstance(drugModel.getActiveSubstance());
+        drug.setName(drugModel.getName());
+        drug.setDosageTaking(drugModel.getDosageTaking());
+        drug.setImage(drugModel.getImage());
+        drug.setSpecialWarnings(drugModel.getSpecialWarnings());
+        drug.setContraindications(drugModel.getContraindications());
+        drug.setAdditionalInfo(drugModel.getAdditionalInfo());
+        drug.setIndications(drugModel.getIndications());
+        drug.setForm(drugModel.getForm());
+        drug.setPrice(drugModel.getPrice());
+        drug.setProducer(drugModel.getProducer());
+
+        drugRepository.save(drug);
+        return drug;
     }
 
     @Override
     public void deleteDrug(int drugID) {
-        DrugModel drugModel = drugRepository.findById(drugID)
-                .orElseThrow(()-> new DrugNotFoundException("Drug was not found"));
-
-        drugRepository.delete(drugModel);
+        getDrugById(drugID);
+        drugRepository.deleteById(drugID);
     }
 }
 
